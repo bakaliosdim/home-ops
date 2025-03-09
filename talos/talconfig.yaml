@@ -5,10 +5,10 @@ clusterName: kubernetes
 talosVersion: "${talosVersion}"
 kubernetesVersion: "${kubernetesVersion}"
 
-endpoint: https://192.168.1.155:6443
+endpoint: https://192.168.1.164:6443
 additionalApiServerCertSans: &sans
   - "127.0.0.1"
-  - "192.168.1.155"
+  - "192.168.1.164"
 additionalMachineCertSans: *sans
 
 clusterPodNets: ["10.42.0.0/16"]
@@ -20,7 +20,7 @@ cniConfig:
 
 nodes:
   - hostname: "home-ops-master"
-    ipAddress: "192.168.1.155"
+    ipAddress: "192.168.1.139"
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
@@ -28,16 +28,16 @@ nodes:
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "08:00:27:e9:d5:74"
+          hardwareAddr: "08:00:27:54:3a:81"
         dhcp: false
         addresses:
-          - "192.168.1.155/24"
+          - "192.168.1.139/24"
         routes:
           - network: "0.0.0.0/0"
             gateway: "192.168.1.1"
         mtu: 1500
         vip:
-          ip: "192.168.1.155"
+          ip: "192.168.1.164"
 
 # Global patches
 patches:
